@@ -16,7 +16,7 @@ exports.lambdaHandler = async (event, context) => {
     try {
         let pricipal = event.requestContext.authorizer.principalId;
         let permissionLevel = event.requestContext.authorizer.permissionLevel;
-        if (permissionLevel < 5) {
+        if (permissionLevel < 10) {
             return {
                 'statusCode': 403, // Forbidden
                 'body': JSON.stringify({
@@ -28,7 +28,7 @@ exports.lambdaHandler = async (event, context) => {
         response = {
             'statusCode': 200,
             'body': JSON.stringify({
-                message: 'hello world from service A ' + pricipal
+                message: 'hello world from admin service ' + pricipal
             })
         };
     } catch (err) {
